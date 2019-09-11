@@ -1,6 +1,10 @@
-# Prettier for Svelte components
+# Prettier for Svelte v2 (strictly v2) components
 
 Format your svelte components using prettier.
+
+## Why the Fork
+
+This repo is forked from [UnwrittenFun/prettier-plugin-svelte](https://github.com/UnwrittenFun/prettier-plugin-svelte). The point in the original repo where v2 support was dropped has bugs which were fixed _after_ the support was dropped, so there doesn't exist any prettier plugin to properly format Svelte v2 code at the time of this writing.
 
 ## Features
 
