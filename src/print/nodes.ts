@@ -224,6 +224,18 @@ export interface ModuleScriptNode extends BaseNode {
     content: Node;
 }
 
+export interface BodyNode extends BaseNode {
+    type: 'Body';
+    name: string;
+    attributes: Node[];
+}
+
+export interface OptionsNode extends BaseNode {
+    type: 'Options';
+    name: string;
+    attributes: Node[];
+}
+
 export type Node =
     | FragmentNode
     | ElementNode
@@ -260,4 +272,6 @@ export type Node =
     | RawMustacheTagNode
     | SpreadNode
     | InstanceScriptNode
-    | ModuleScriptNode;
+    | ModuleScriptNode
+    | BodyNode
+    | OptionsNode;

@@ -113,6 +113,20 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                     node.children.length ? concat([softline, '</', node.name, '>']) : '',
                 ]),
             );
+        case 'Options':
+        case 'Body':
+            return group(
+                concat([
+                    '<',
+                    node.name,
+
+                    indent(
+                        group(concat(path.map(childPath => childPath.call(print), 'attributes'))),
+                    ),
+
+                    ' />',
+                ]),
+            );
         case 'Identifier':
             return node.name;
         case 'Attribute': {
@@ -168,7 +182,13 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
         }
         case 'ElseBlock': {
             // Else if
-            if (node.children.length === 1 && node.children[0].type === 'IfBlock') {
+            const parent = path.getParentNode() as Node;
+
+            if (
+                node.children.length === 1 &&
+                node.children[0].type === 'IfBlock' &&
+                parent.type !== 'EachBlock'
+            ) {
                 const ifNode = node.children[0] as IfBlockNode;
                 const def: Doc[] = [
                     '{:elseif ',
