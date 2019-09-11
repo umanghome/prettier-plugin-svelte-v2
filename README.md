@@ -12,7 +12,7 @@ This repo is forked from [UnwrittenFun/prettier-plugin-svelte](https://github.co
 -   Format Svelte syntax, e.g. each loops, if statements, await blocks, etc.
 -   Format the javascript expressions embedded in the svelte syntax
     -   e.g. expressions inside of `{}`, event bindings `on:click=""`, and more
--   Supports Svelte v2 and v3
+-   Supports Svelte v2
 
 ## How to use
 
