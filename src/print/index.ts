@@ -277,7 +277,16 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                 line,
                 'bind:',
                 node.name,
-                node.expression.type === 'Identifier' && node.expression.name === node.name
+                node.expression && node.expression.type === 'Identifier' && node.expression.name === node.name
+                    ? ''
+                    : concat(['=', '{', printJS(path, print, 'expression'), '}']),
+            ]);
+        case 'Class':
+            return concat([
+                line,
+                'class:',
+                node.name,
+                node.expression && node.expression.type === 'Identifier' && node.expression.name === node.name
                     ? ''
                     : concat(['=', '{', printJS(path, print, 'expression'), '}']),
             ]);
@@ -390,7 +399,12 @@ function printJS(path: FastPath, print: PrintFn, name?: string) {
         return path.call(print);
     }
 
-    path.getValue()[name].isJS = true;
+    const value = path.getValue()[name];
+
+    if (value) {
+        value.isJS = true;
+    }
+
     return path.call(print, name);
 }
 

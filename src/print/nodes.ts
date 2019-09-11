@@ -108,6 +108,12 @@ export interface BindingNode extends BaseNode {
     expression: Node;
 }
 
+export interface ClassNode extends BaseNode {
+    type: 'Class';
+    name: string;
+    expression: Node;
+}
+
 export interface DebugTagNode extends BaseNode {
     type: 'DebugTag';
     identifiers: Node[];
@@ -163,6 +169,7 @@ export interface TransitionNode extends BaseNode {
     type: 'Transition';
     name: string;
     expression?: Node;
+    modifiers?: string[];
     intro: boolean;
     outro: boolean;
 }
@@ -254,6 +261,7 @@ export type Node =
     | EventHandlerNode
     | BindingNodeV2
     | BindingNode
+    | ClassNode
     | DebugTagNode
     | RefNode
     | InlineComponentNode
