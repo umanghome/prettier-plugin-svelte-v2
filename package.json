@@ -1,7 +1,7 @@
 {
     "name": "prettier-plugin-sveltev2",
-    "version": "0.1.1",
-    "description": "Svelte plugin for prettier",
+    "version": "0.1.2",
+    "description": "Prettier plugin for Svelte v2",
     "main": "plugin.js",
     "scripts": {
         "build": "rollup -c",
@@ -14,7 +14,8 @@
     },
     "keywords": [
         "prettier",
-        "svelte"
+        "svelte",
+        "v2"
     ],
     "author": "Umang Galaiya <umanghome@gmail.com>",
     "contributors": [
@@ -26,8 +27,6 @@
     },
     "homepage": "https://github.com/umanghome/prettier-plugin-sveltev2#readme",
     "dependencies": {
-        "prettier": "^1.16.1",
-        "svelte": "^2.16.0",
         "tslib": "^1.9.3"
     },
     "devDependencies": {
@@ -41,5 +40,9 @@
         "test-svelte2": "npm:svelte@2.16.0",
         "ts-node": "^7.0.1",
         "typescript": "3.2.4"
+    },
+    "peerDependencies": {
+        "prettier": "^1.16.1",
+        "svelte": "^2.16.0"
     }
 }
