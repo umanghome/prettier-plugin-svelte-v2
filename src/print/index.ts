@@ -286,10 +286,8 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
 
             if (node.expression && node.expression.type === 'Identifier' && node.expression.name === node.name) {
                 contents = '';
-            } else if (node.expression && node.expression.type === 'ObjectExpression') {
-                contents = concat(['=', printJS(path, print, 'expression')]);
             } else {
-                contents = concat(['=', '{', printJS(path, print, 'expression'), '}']);
+                contents = concat(['=', '"', printJS(path, print, 'expression'), '"']);
             }
 
             return concat([
