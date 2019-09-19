@@ -4,6 +4,7 @@
     "description": "Prettier plugin for Svelte v2",
     "main": "plugin.js",
     "scripts": {
+        "start": "rollup -cw",
         "build": "rollup -c",
         "test": "ava",
         "prepublishOnly": "npm test && npm run build"
