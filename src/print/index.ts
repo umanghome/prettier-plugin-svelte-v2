@@ -282,13 +282,21 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                     : concat(['=', '{', printJS(path, print, 'expression'), '}']),
             ]);
         case 'Class':
+            let contents;
+
+            if (node.expression && node.expression.type === 'Identifier' && node.expression.name === node.name) {
+                contents = '';
+            } else if (node.expression && node.expression.type === 'ObjectExpression') {
+                contents = concat(['=', printJS(path, print, 'expression')]);
+            } else {
+                contents = concat(['=', '{', printJS(path, print, 'expression'), '}']);
+            }
+
             return concat([
                 line,
                 'class:',
                 node.name,
-                node.expression && node.expression.type === 'Identifier' && node.expression.name === node.name
-                    ? ''
-                    : concat(['=', '{', printJS(path, print, 'expression'), '}']),
+                contents,
             ]);
         case 'DebugTag':
             return concat([
