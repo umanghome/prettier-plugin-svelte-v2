@@ -24,7 +24,7 @@ function testV2(input: string, t: ExecutionContext<any>) {
         parser: 'svelte' as any,
         plugins: [require.resolve('../../src')],
         tabWidth: 4,
-        sveltePath: resolve(__dirname, '../../node_modules/test-svelte2'),
+        sveltePath: resolve(__dirname, '../../node_modules/svelte'),
     } as any);
     t.is(input, actualOutput);
 }
